@@ -13,7 +13,6 @@ import org.eclipse.microprofile.graphql.Query;
 import org.eclipse.microprofile.graphql.Source;
 
 import io.smallrye.mutiny.Uni;
-import io.smallrye.mutiny.operators.multi.processors.BroadcastProcessor;
 
 @GraphQLApi
 @ApplicationScoped
@@ -21,8 +20,6 @@ public class FilmResource {
 
     @Inject
     GalaxyService service;
-
-    BroadcastProcessor<Hero> processor = BroadcastProcessor.create();
 
     @Query("allFilms")
     @Description("Get all Films from a galaxy far far away")
@@ -50,7 +47,6 @@ public class FilmResource {
     @Mutation
     public Uni<Void> createHero(Hero hero) {
         service.addHero(hero);
-        processor.onNext(hero);
         return Uni.createFrom().voidItem();
     }
 
