@@ -1,18 +1,18 @@
-# Reproducer for exception when using Void return type in Mutation
+# Quarkus GraphQL Void Return Reproducer
 
-## How to run
+A reproducer for GraphQL exception when returning Void from a mutation.
+
+Used in discussion [https://github.com/quarkusio/quarkus/discussions/25381](https://github.com/quarkusio/quarkus/discussions/25381) and in issue [https://github.com/smallrye/smallrye-graphql/issues/1383](https://github.com/smallrye/smallrye-graphql/issues/1383).
+
+## Steps to reproduce
+
+1. Just run the application and the exception will be thrown.
 
 ```
 $ mvn quarkus:dev
 ```
 
-## Code
-
-The code is adapted from Quarkus guide on [smallrye-graphql](https://quarkus.io/guides/microprofile-graphql).
-
-## Problematic Mutation
-
-Source file - [FilmResource.java](src/main/java/org/acme/microprofile/graphql/FilmResource.java)
+2. The problematic mutation is `createHero` in file [FilmResource.java](src/main/java/org/acme/microprofile/graphql/FilmResource.java).
 
 ## Exception stacktrace
 
